@@ -69,7 +69,7 @@ say_hello =
 puts say_hello
 # 条件演算子（シンプルなif文であればこちらに置き換えた方がスッキリするかも？）
 n = 11
-message = n > 10 ? '10より大きい' : '10以下'
+message = n > 10 ? '10より大きい' : '10以下' # 条件式 ? 真のときの処理 : 偽のときの処理
 puts message
 # デフォルト値付きの引数
 def call_someone(country = 'japan')
