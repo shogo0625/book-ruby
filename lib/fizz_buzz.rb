@@ -10,6 +10,6 @@ def fizz_buzz(n)
   end
 end
 
-for n in 1..30
-  puts fizz_buzz(n)
-end
+# for n in 1..30
+#   puts fizz_buzz(n)
+# end
