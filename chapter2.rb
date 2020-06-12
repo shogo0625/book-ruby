@@ -71,3 +71,24 @@ puts say_hello
 n = 11
 message = n > 10 ? '10より大きい' : '10以下'
 puts message
+# デフォルト値付きの引数
+def call_someone(country = 'japan')
+  if country == 'japan'
+    'ねえ'
+  else
+    'hey'
+  end
+end
+puts call_someone
+puts call_someone('us')
+# ?を付けて真偽値を返すメソッドに(7の倍数か？)
+def multiple_of_seven?(n)
+  n % 7 == 0
+end
+puts multiple_of_seven?(28)
+# ！を付けると変数の値自体を更新(破壊的メソッド)、付けないと一時的な表示
+w = 'asap'
+puts w.upcase
+puts w
+puts w.upcase!
+puts w
