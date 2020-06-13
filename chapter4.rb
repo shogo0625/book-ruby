@@ -17,7 +17,7 @@ a.delete_if do |n|
   n.odd? # 奇数だけ削除
 end
 p a
-# each文のブロック引数は使わない場合省力化
+# each文のブロック引数は使わない場合省略可
 sum = 0
 numbers = [1, 2, 3, 4]
 numbers.each do
@@ -152,3 +152,63 @@ end
 #=> length: 10, width: 20, i: 0
 # length: 30, width: 40, i: 1
 # length: 50, width: 60, i: 2
+# 4.9
+# timesメソッド
+sum = 0
+5.times { |n| sum += n }
+p sum #=> 10
+# uptoメソッド / downtoメソッド
+a = []
+10.upto(14) { |n| a << n }
+p a #=> [10, 11, 12, 13, 14]
+# stepメソッド　開始値.step(上限値, 1度に増減する大きさ)
+a = []
+1.step(10, 2) { |n| a << n }
+p a #=> [1, 3, 5, 7, 9]
+# while文　while 条件式 (真であれば実行) end
+a = []
+while a.size < 5
+  a << 1
+end
+p a
+# until文　until 条件式 (偽であれば実行) end
+until a.size <= 2
+  a.delete_at(-1)
+end
+p a
+# loop文　無限ループ　breakで抜ける
+numbers = [1, 2, 3, 4, 5]
+loop do
+  n = numbers.sample
+  p n
+  break if n == 5
+end
+# catch(:タグ) と throw(:タグ) で繰り返し処理の大域脱出（繰り返しの中に繰り返し等）
+fruits = ['apple', 'melon', 'orange']
+numbers = [1, 2, 3]
+catch :done do
+  fruits.shuffle.each do |fruit|
+    numbers.shuffle.each do |n|
+      puts "#{fruit}, #{n}"
+      if fruit == 'orange' && n == 3
+        throw :done
+      end
+    end
+  end
+end
+# => melon, 2 melon, 1, melon, 3 orange, 3
+# next で次の繰り返しに進む
+numbers = [1, 2, 3, 4, 5]
+numbers.each do |n|
+  next if n.even?
+  puts n
+end
+# => 1, 3, 5
+# redo でその回の繰り返し処理のやり直し
+foods = ['ピーマン', 'トマト', 'セロリ']
+foods.each do |food|
+  print "#{food}は好きだよね？ =>"
+  answer = ['はい', 'いいえ'].sample
+  puts answer
+  redo unless answer == 'はい'
+end
